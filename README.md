@@ -4,7 +4,7 @@
 
 **Building games and cool stuff for the web.**
 
-[![Site](https://img.shields.io/badge/🌐_Live_Site-yallcode.github.io-00ff88?style=for-the-badge&labelColor=0d1117)](https://yallcode.github.io/YallCode/)
+[![Site](https://img.shields.io/badge/🌐_Live_Site-yallcode.github.io-00ff88?style=for-the-badge&labelColor=0d1117)](https://yallcode.github.io/YallaYCode/)
 [![GitHub](https://img.shields.io/badge/GitHub-yallcode-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/yallcode)
 [![X](https://img.shields.io/badge/X-@YallCode-000000?style=for-the-badge&logo=x&logoColor=white)](https://x.com/YallCode)
 [![YouTube](https://img.shields.io/badge/YouTube-@YallaYCode-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/@YallaYCode)
