@@ -55,7 +55,7 @@
 - 📧 **Main:** YallBertgoum@gmail.com
 - 🐦 **X/Twitter:** [@YallCode](https://x.com/YallCode)
 - 📺 **YouTube:** [@YallaYCode](https://www.youtube.com/@YallaYCode)
-- 💬 **Discord:** [discord.gg/yUe8kE5fRF](https://discord.gg/yUe8kE5fRF)
+- 💬 **Discord:** [discord.gg/yUe8kE5fRF](https://discord.gg/MDspHGzA8X)
 
 ---
 
