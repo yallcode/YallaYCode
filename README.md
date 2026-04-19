@@ -28,6 +28,7 @@
 
 | Project | Description | Links |
 |---|---|---|
+| **YallQuran** | Clean Quran reader — Tajweed colors, 4 Qirāʾāt scripts, 8 reciters with full audio player. No login, no paywall | [Site](https://yallcode.github.io/YallQuran/) · [Source](https://github.com/yallcode/YallQuran) |
 | **YallAnime** | Watch free anime online — Sub & Dub, no account. Powered by Jikan API + Cloudflare Worker | [Site](https://yallcode.github.io/YallAnime/) · [Source](https://github.com/yallcode/YallAnime) |
 | **StudyFree** | Free Quizlet-like flashcard app — Flashcards, Learn, Write, Spell, Test, Match, Gravity modes. No account ever | [Site](https://yallcode.github.io/StudyFree/) · [Source](https://github.com/yallcode/StudyFree) |
 | **YallBot** | AI chatbot powered by Claude, runs entirely in your browser — no backend, full markdown rendering | [Site](https://yallcode.github.io/YallBot/) · [Source](https://github.com/yallcode/YallBot) |
@@ -45,7 +46,6 @@
 | **GitDash** | Time machine for GD creators — auto-snapshots your level on every save, one-tap rollback. Geode mod | [Source](https://github.com/yallcode/GitDash) |
 | **YallBotMod** | Frame-accurate macro recorder & bot for Geometry Dash. Record inputs, replay perfectly. Geode mod | [Source](https://github.com/yallcode/YallBotMod) |
 | **py+** | Beginner-friendly programming language that reads like English — one Python script, no installs | [Source](https://github.com/yallcode/pyplus) |
-| **AI Assistant for Godot** | AI coding assistant plugin for Godot 4 — real-time streaming, agentic code, one-click Apply | [Source](https://github.com/yallcode/ai_assistant_for_godot) |
 
 ---
 
@@ -55,7 +55,7 @@
 - 📧 **Main:** YallBertgoum@gmail.com
 - 🐦 **X/Twitter:** [@YallCode](https://x.com/YallCode)
 - 📺 **YouTube:** [@YallaYCode](https://www.youtube.com/@YallaYCode)
-- 💬 **Discord:** [discord.gg/yUe8kE5fRF](https://discord.gg/MDspHGzA8X)
+- 💬 **Discord:** [discord.gg/yUe8kE5fRF](https://discord.gg/yUe8kE5fRF)
 
 ---
 
