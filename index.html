@@ -721,6 +721,35 @@
       position: relative;
       z-index: 1;
     }
+    /* ── UPDATES PANEL ── */
+    .updates-wrap { margin-top: 2.5rem; }
+    .updates-btn { display:flex; align-items:center; gap:0.75rem; background:var(--card2); border:1px solid var(--border); border-radius:6px; padding:0.9rem 1.5rem; color:var(--green); font-family:"Orbitron",monospace; font-size:0.75rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; cursor:pointer; transition:all 0.3s; width:100%; justify-content:flex-start; }
+    .updates-btn:hover { border-color:rgba(0,255,136,0.4); background:rgba(0,255,136,0.05); box-shadow:0 0 20px rgba(0,255,136,0.08); }
+    .updates-btn.open { border-color:rgba(0,255,136,0.4); border-bottom-left-radius:0; border-bottom-right-radius:0; border-bottom-color:transparent; }
+    .updates-btn-icon { font-size:1rem; color:var(--cyan); }
+    .updates-arrow { margin-left:auto; font-size:0.6rem; transition:transform 0.3s; color:rgba(201,209,217,0.4); }
+    .updates-arrow.flipped { transform:rotate(180deg); }
+    .updates-panel { border:1px solid rgba(0,255,136,0.4); border-top:none; border-radius:0 0 6px 6px; background:var(--card2); max-height:0; overflow:hidden; transition:max-height 0.5s cubic-bezier(0.4,0,0.2,1); }
+    .updates-panel.open { max-height:700px; overflow-y:auto; }
+    .updates-inner { padding:1.25rem 1.5rem; }
+    .updates-loading { display:flex; align-items:center; padding:0.5rem 0; }
+    .loading-dot { width:6px; height:6px; background:var(--green); border-radius:50%; margin:0 3px; animation:dotBounce 1.2s ease-in-out infinite; }
+    .loading-dot:nth-child(2){animation-delay:0.2s;} .loading-dot:nth-child(3){animation-delay:0.4s;}
+    @keyframes dotBounce { 0%,80%,100%{opacity:0.2;transform:scale(0.8)} 40%{opacity:1;transform:scale(1.2)} }
+    .update-row { display:grid; grid-template-columns:1fr auto; align-items:center; gap:1rem; padding:0.75rem 0; border-bottom:1px solid rgba(0,255,136,0.07); text-decoration:none; }
+    .update-row:last-child { border-bottom:none; }
+    .update-row:hover .update-name { color:var(--cyan); }
+    .update-left { display:flex; align-items:baseline; gap:1rem; min-width:0; }
+    .update-rank { font-family:"Orbitron",monospace; font-size:0.6rem; color:rgba(201,209,217,0.25); flex-shrink:0; width:1.5rem; }
+    .update-info { min-width:0; }
+    .update-name { font-family:"Orbitron",monospace; font-size:0.8rem; color:#fff; font-weight:700; letter-spacing:0.5px; transition:color 0.2s; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    .update-message { font-size:0.8rem; color:rgba(201,209,217,0.45); margin-top:0.2rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:500px; }
+    .update-right { display:flex; align-items:center; gap:0.75rem; flex-shrink:0; }
+    .update-time { font-family:"Orbitron",monospace; font-size:0.65rem; color:var(--green); white-space:nowrap; letter-spacing:1px; }
+    .update-time.old { color:rgba(201,209,217,0.3); } .update-time.medium { color:rgba(0,229,255,0.6); }
+    .update-dot { width:6px; height:6px; border-radius:50%; background:var(--green); flex-shrink:0; }
+    .update-dot.old { background:rgba(201,209,217,0.2); } .update-dot.medium { background:var(--cyan); opacity:0.6; }
+    .updates-error { color:rgba(201,209,217,0.4); font-size:0.85rem; padding:0.5rem 0; }
   </style>
 </head>
 <body>
@@ -739,7 +768,6 @@
       <a href="https://github.com/yallcode" target="_blank">GitHub</a>
       <a href="https://x.com/YallCode" target="_blank">X</a>
       <a href="https://www.youtube.com/@YallaYCode" target="_blank">YouTube</a>
-      <a href="https://discord.gg/MDspHGzA8X" target="_blank">Discord</a>
     </div>
   </nav>
 
@@ -792,7 +820,7 @@
         <div class="card-links">
           <a href="https://yallgdps.ps.fhgdps.com/dashboard/" target="_blank">Enter Dashboard</a>
           <a href="YallGDPS.exe" download class="secondary">Download Windows (.exe)</a>
-          <a href="https://drive.google.com/file/d/1XJgB3YvDYNTHICLFLXTbOK_3j33dsdkZ/view?usp=sharing" target="_blank" class="secondary">Download Android (.apk)</a>
+          <a href="https://drive.google.com/file/d/1XJgB3YvDYNTHICLFLXTbOK_3j33dsdkZ/view?usp=drive_link" target="_blank" class="secondary">Download Android (.apk)</a>
         </div>
       </div>
 
@@ -965,6 +993,27 @@
       </div>
 
     </div>
+
+    <!-- LATEST UPDATES PANEL -->
+    <div class="updates-wrap">
+      <button class="updates-btn" id="updatesBtn" onclick="toggleUpdates()">
+        <span class="updates-btn-icon">⬡</span>
+        <span id="updatesBtnLabel">Latest Repo Updates</span>
+        <span class="updates-arrow" id="updatesArrow">▼</span>
+      </button>
+      <div class="updates-panel" id="updatesPanel">
+        <div class="updates-inner" id="updatesInner">
+          <div class="updates-loading" id="updatesLoading">
+            <span class="loading-dot"></span>
+            <span class="loading-dot"></span>
+            <span class="loading-dot"></span>
+            <span style="margin-left:0.75rem;font-size:0.85rem;color:rgba(201,209,217,0.5);">Fetching latest commits...</span>
+          </div>
+          <div id="updatesList" style="display:none;"></div>
+        </div>
+      </div>
+    </div>
+
   </section>
 
   <div class="divider"></div>
@@ -1039,9 +1088,141 @@
       <a href="https://github.com/yallcode" target="_blank">GitHub</a>
       <a href="https://x.com/YallCode" target="_blank">X</a>
       <a href="https://www.youtube.com/@YallaYCode" target="_blank">YouTube</a>
-      <a href="https://discord.gg/MDspHGzA8X" target="_blank">Discord</a>
     </div>
   </footer>
 
 </body>
 </html>
+
+<script>
+  // ── ALL YOUR REPOS TO TRACK ──
+  const REPOS = [
+    "The-Chaos-Button",
+    "TicTacToe",
+    "Pawinder",
+    "YallAnime",
+    "StudyFree",
+    "YallBot",
+    "YallStudioCode-",
+    "YallRaR",
+    "Project-Aegis-Scanner",
+    "QR-Code-Generator",
+    "GitDash",
+    "YallBotMod",
+    "pyplus",
+    "ai_assistant_for_godot",
+    "YallCode",
+    "YallDiscBot",
+  ];
+
+  const OWNER = "yallcode";
+  let fetched = false;
+
+  function toggleUpdates() {
+    const panel = document.getElementById("updatesPanel");
+    const btn = document.getElementById("updatesBtn");
+    const arrow = document.getElementById("updatesArrow");
+    const isOpen = panel.classList.contains("open");
+
+    panel.classList.toggle("open");
+    btn.classList.toggle("open");
+    arrow.classList.toggle("flipped");
+
+    // Only fetch once
+    if (!isOpen && !fetched) {
+      fetched = true;
+      loadUpdates();
+    }
+  }
+
+  async function loadUpdates() {
+    const list = document.getElementById("updatesList");
+    const loading = document.getElementById("updatesLoading");
+
+    try {
+      // Fetch all repos in parallel
+      const results = await Promise.allSettled(
+        REPOS.map(repo =>
+          fetch(`https://api.github.com/repos/${OWNER}/${repo}/commits?per_page=1`)
+            .then(r => r.ok ? r.json() : null)
+            .then(data => {
+              if (!data || !data[0]) return null;
+              const commit = data[0];
+              return {
+                name: repo,
+                url: `https://github.com/${OWNER}/${repo}`,
+                message: commit.commit.message.split("\n")[0],
+                date: new Date(commit.commit.author.date),
+              };
+            })
+        )
+      );
+
+      const items = results
+        .filter(r => r.status === "fulfilled" && r.value)
+        .map(r => r.value)
+        .sort((a, b) => b.date - a.date);
+
+      loading.style.display = "none";
+
+      if (items.length === 0) {
+        list.innerHTML = `<div class="updates-error">Could not fetch updates. Check back later.</div>`;
+        list.style.display = "block";
+        return;
+      }
+
+      const now = Date.now();
+      list.innerHTML = items.map((item, i) => {
+        const diffMs = now - item.date;
+        const diffDays = diffMs / (1000 * 60 * 60 * 24);
+        const timeStr = formatRelative(item.date);
+        const ageClass = diffDays < 7 ? "fresh" : diffDays < 60 ? "medium" : "old";
+
+        return `
+          <a class="update-row" href="${item.url}" target="_blank" rel="noopener">
+            <div class="update-left">
+              <span class="update-rank">${String(i + 1).padStart(2, "0")}</span>
+              <div class="update-info">
+                <div class="update-name">${item.name}</div>
+                <div class="update-message">${escHtml(item.message)}</div>
+              </div>
+            </div>
+            <div class="update-right">
+              <span class="update-time ${ageClass === "old" ? "old" : ageClass === "medium" ? "medium" : ""}">${timeStr}</span>
+              <span class="update-dot ${ageClass === "old" ? "old" : ageClass === "medium" ? "medium" : ""}"></span>
+            </div>
+          </a>`;
+      }).join("");
+
+      list.style.display = "block";
+
+      // Update button label with count
+      document.getElementById("updatesBtnLabel").textContent = `Latest Repo Updates — ${items.length} repos`;
+
+    } catch (e) {
+      loading.style.display = "none";
+      list.innerHTML = `<div class="updates-error">Failed to load updates. GitHub API may be rate-limited.</div>`;
+      list.style.display = "block";
+    }
+  }
+
+  function formatRelative(date) {
+    const diffMs = Date.now() - date;
+    const mins = Math.floor(diffMs / 60000);
+    const hrs = Math.floor(mins / 60);
+    const days = Math.floor(hrs / 24);
+    const months = Math.floor(days / 30);
+    const years = Math.floor(days / 365);
+
+    if (mins < 60)   return mins <= 1 ? "just now" : `${mins}m ago`;
+    if (hrs < 24)    return `${hrs}h ago`;
+    if (days < 7)    return `${days}d ago`;
+    if (days < 30)   return `${Math.floor(days / 7)}w ago`;
+    if (months < 12) return `${months}mo ago`;
+    return `${years}y ago`;
+  }
+
+  function escHtml(str) {
+    return str.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+  }
+</script>
